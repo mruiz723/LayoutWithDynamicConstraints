@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LayoutWithDynamicConstraints" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,92 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8zb-Ky-lxV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LwF-0z-Z6n"/>
+                                </connections>
+                            </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44O-KF-cel">
+                                <rect key="frame" x="0.0" y="447" width="375" height="220"/>
+                                <connections>
+                                    <segue destination="Hgx-a5-Kxf" kind="embed" id="PSy-2g-nqR"/>
+                                </connections>
+                            </containerView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGt-Lw-rN9">
+                                <rect key="frame" x="0.0" y="227" width="375" height="220"/>
+                                <color key="backgroundColor" red="0.36078431372549019" green="0.38823529411764707" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eEr-AE-0NB"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="44O-KF-cel" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0dy-bL-v8i"/>
+                            <constraint firstItem="8zb-Ky-lxV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2YK-xz-074"/>
+                            <constraint firstItem="uGt-Lw-rN9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4CZ-vN-lms"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="44O-KF-cel" secondAttribute="bottom" id="4qG-aC-gxA"/>
+                            <constraint firstItem="44O-KF-cel" firstAttribute="top" secondItem="uGt-Lw-rN9" secondAttribute="bottom" id="AXM-zS-fu7"/>
+                            <constraint firstItem="8zb-Ky-lxV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KB4-G3-8ar"/>
+                            <constraint firstItem="44O-KF-cel" firstAttribute="top" secondItem="uGt-Lw-rN9" secondAttribute="bottom" id="OqT-ct-k5t"/>
+                            <constraint firstAttribute="trailing" secondItem="8zb-Ky-lxV" secondAttribute="trailing" id="QQk-1W-Mzt"/>
+                            <constraint firstItem="44O-KF-cel" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.33" id="R6P-Sm-ZAh"/>
+                            <constraint firstItem="44O-KF-cel" firstAttribute="height" secondItem="8zb-Ky-lxV" secondAttribute="height" id="WWk-mW-WhB"/>
+                            <constraint firstAttribute="trailing" secondItem="uGt-Lw-rN9" secondAttribute="trailing" id="b7c-Ej-UuS"/>
+                            <constraint firstItem="uGt-Lw-rN9" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.33" id="qQ0-n5-fD1"/>
+                            <constraint firstAttribute="trailing" secondItem="44O-KF-cel" secondAttribute="trailing" id="uiw-0y-Rqq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="8zb-Ky-lxV" id="XDE-Al-0ub"/>
+                        <outlet property="webView" destination="uGt-Lw-rN9" id="Vg2-6g-FTs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bhr-6F-7aS">
+            <objects>
+                <viewController id="Hgx-a5-Kxf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6aq-4s-oVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mjY-lI-aEr">
+                                <rect key="frame" x="0.0" y="0.0" width="187" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aGQ-8n-XII">
+                                <rect key="frame" x="188" y="0.0" width="187" height="220"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aGQ-8n-XII" firstAttribute="width" secondItem="mjY-lI-aEr" secondAttribute="width" id="7JA-oF-9Ra"/>
+                            <constraint firstAttribute="bottom" secondItem="aGQ-8n-XII" secondAttribute="bottom" id="BFs-mi-2TJ"/>
+                            <constraint firstItem="mjY-lI-aEr" firstAttribute="width" secondItem="6aq-4s-oVZ" secondAttribute="width" multiplier="0.5" id="IJq-30-LIG"/>
+                            <constraint firstItem="aGQ-8n-XII" firstAttribute="top" secondItem="6aq-4s-oVZ" secondAttribute="top" id="N1G-1e-8Vz"/>
+                            <constraint firstItem="mjY-lI-aEr" firstAttribute="leading" secondItem="6aq-4s-oVZ" secondAttribute="leading" id="VKD-GI-u8N"/>
+                            <constraint firstAttribute="trailing" secondItem="aGQ-8n-XII" secondAttribute="trailing" id="Vll-KV-Rge"/>
+                            <constraint firstItem="mjY-lI-aEr" firstAttribute="top" secondItem="6aq-4s-oVZ" secondAttribute="top" id="XcZ-CX-wfz"/>
+                            <constraint firstAttribute="bottom" secondItem="mjY-lI-aEr" secondAttribute="bottom" id="scL-C1-u1F"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0r-pr-oze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="669.26536731634189"/>
         </scene>
     </scenes>
 </document>
